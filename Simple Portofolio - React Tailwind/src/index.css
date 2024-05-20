@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background: whitesmoke;
+  }
+}
+
+@layer components {
+  .navbar-effect::after {
+    content: "";
+    display: block;
+    width: 0%;
+    height: 3px;
+    background: #14b8a6;
+    transition: all 0.4s linear;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+  }
+
+  .navbar-effect:is(:hover, :focus)::after {
+    width: 100%;
+  }
+}
