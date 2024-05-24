@@ -7,6 +7,10 @@ import LoginPage from "./pages/login.jsx";
 import RegisterPage from "./pages/register.jsx";
 import NotFound from "./pages/404.jsx";
 import ProductsPage from "./pages/products.jsx";
+import { DetailProductPage } from "./pages/DetailProduct.jsx";
+import { Provider } from "react-redux";
+import store from "./redux/store.js";
+import DarkModeContextProvider from "./context/DarkMode.jsx";
 
 const Router = createBrowserRouter([
   {
@@ -28,10 +32,18 @@ const Router = createBrowserRouter([
     path: "/products",
     element: <ProductsPage />,
   },
+  {
+    path: "/product/:id",
+    element: <DetailProductPage />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={Router} />
+    <Provider store={store}>
+      <DarkModeContextProvider>
+        <RouterProvider router={Router} />
+      </DarkModeContextProvider>
+    </Provider>
   </React.StrictMode>
 );
